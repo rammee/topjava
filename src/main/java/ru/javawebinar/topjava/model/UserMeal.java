@@ -7,6 +7,9 @@ import java.time.LocalDateTime;
  * 11.01.2015.
  */
 public class UserMeal {
+
+    protected Long id;
+
     protected final LocalDateTime dateTime;
 
     protected final String description;
@@ -19,6 +22,19 @@ public class UserMeal {
         this.calories = calories;
     }
 
+    public UserMeal(Long id, LocalDateTime dateTime, String description, int calories) {
+        this(dateTime, description, calories);
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public LocalDateTime getDateTime() {
         return dateTime;
     }
@@ -29,5 +45,15 @@ public class UserMeal {
 
     public int getCalories() {
         return calories;
+    }
+
+    @Override
+    public String toString() {
+        return "UserMeal{" +
+                "id=" + id +
+                ", dateTime=" + dateTime +
+                ", description='" + description + '\'' +
+                ", calories=" + calories +
+                '}';
     }
 }
