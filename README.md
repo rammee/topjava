@@ -56,7 +56,7 @@ Maven/ Spring/ Security/ JPA(Hibernate)/ REST(Jackson)/ Bootstrap(CSS)/ jQuery +
 ```
 Реализовать UserMealsUtil.getFilteredMealsWithExceeded:
 -  должны возвращаться только записи между startTime и endTime 
--  поле UserMealWithExceed.exceed должно показывать, 
+-  поле UserMealWithExceed.exceeded должно показывать,
                                      превышает ли сумма калорий за весь день параметра метода caloriesPerDay  
         
 Т.е UserMealWithExceed - это запись одной еды, но поле exceeded будет одинаково для всех записей за этот день.

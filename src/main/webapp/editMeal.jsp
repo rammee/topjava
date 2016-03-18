@@ -9,10 +9,11 @@
 <body>
 <h2>Edit meal</h2>
 <form id="edit_meal_form" method="post" action="meals">
+    <jsp:useBean id="userMeal" scope="request" class="ru.javawebinar.topjava.model.UserMeal" />
     <table>
         <tr>
             <td>Date:</td>
-            <td><input name="mealDate" value="${userMeal.dateTime.format(TimeUtil.DATE_TIME_FORMATTER)}"/></td>
+            <td><input type="datetime-local" name="mealDate" value="${userMeal.dateTime}"/></td>
         </tr>
         <tr>
             <td>Description:</td>
@@ -23,8 +24,10 @@
             <td><input name="mealCalories" value="${userMeal.calories}"/></td>
         </tr>
     </table>
-    <input style="display: none;" name="mealId" value="${userMeal.id}">
+    <input type="hidden" name="mealId" value="${userMeal.id}">
+    <input type="hidden" name="selectedAction" value="<%=request.getParameter("action")%>">
     <input type="submit" value="Save"/>
+    <button onclick="window.history.back()">Cancel</button>
 </form>
 </body>
 </html>

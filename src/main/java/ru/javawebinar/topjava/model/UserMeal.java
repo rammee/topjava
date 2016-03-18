@@ -1,38 +1,38 @@
 package ru.javawebinar.topjava.model;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
+import java.util.Objects;
 
 /**
  * GKislin
  * 11.01.2015.
  */
-public class UserMeal {
+public class UserMeal extends BaseEntity {
 
-    protected Long id;
+    public static final Comparator<UserMeal> BY_DATE_DESC_COMPARATOR
+            = ((o1, o2) -> o2.getDateTime().compareTo(o1.getDateTime()));
 
-    protected final LocalDateTime dateTime;
+    private LocalDateTime dateTime;
 
-    protected final String description;
+    private String description;
 
-    protected final int calories;
+    private int calories;
 
-    public UserMeal(LocalDateTime dateTime, String description, int calories) {
-        this.dateTime = dateTime;
-        this.description = description;
-        this.calories = calories;
+    private Long userId;
+
+    public UserMeal() {
+        dateTime = LocalDateTime.now();
     }
 
     public UserMeal(Long id, LocalDateTime dateTime, String description, int calories) {
-        this(dateTime, description, calories);
+        Objects.requireNonNull(dateTime);
+        Objects.requireNonNull(description);
+        Objects.requireNonNull(userId);
         this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+        this.dateTime = dateTime;
+        this.description = description;
+        this.calories = calories;
     }
 
     public LocalDateTime getDateTime() {
@@ -47,13 +47,20 @@ public class UserMeal {
         return calories;
     }
 
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
     @Override
     public String toString() {
         return "UserMeal{" +
-                "id=" + id +
-                ", dateTime=" + dateTime +
+                "dateTime=" + dateTime +
                 ", description='" + description + '\'' +
                 ", calories=" + calories +
-                '}';
+                "} " + super.toString();
     }
 }
